@@ -26,6 +26,12 @@ class PixelPal
             return;
         }
 
+        if (palette == null)
+        {
+            Sys.println("The palette option is required.");
+            return;
+        }
+
         if (output != null)
         {
             runConvert(rest);
@@ -62,6 +68,8 @@ class PixelPal
         {
             return;
         }
+
+        var palette = Palette.fromPNG(palette);
     }
 
     function runValidate(rest:Rest<String>)
@@ -71,6 +79,8 @@ class PixelPal
         {
             return;
         }
+
+        var palette = Palette.fromPNG(palette);
     }
 
     function loadInputFiles(rest:Rest<String>):Array<Image>
