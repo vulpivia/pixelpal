@@ -75,6 +75,28 @@ class PixelPal
             Sys.println("Unable to read palette file '" + palette + "'");
             return;
         }
+
+        for (i in 0...images.length)
+        {
+            images[i].convert(palette);
+
+            if (images.length > 1)
+            {
+                if (!images[i].save(output + i))
+                {
+                    Sys.println("Unable to write file '" + output + i + "'");
+                }
+            }
+            else
+            {
+                if (!images[i].save(output))
+                {
+                    Sys.println("Unable to write file '" + output + "'");
+                }
+            }
+        }
+
+        Sys.println("Conversion finished.");
     }
 
     function runValidate(rest:Rest<String>)

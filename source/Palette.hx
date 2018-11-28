@@ -5,7 +5,7 @@ import sys.io.File;
 
 class Palette
 {
-    var colors:Array<Color>;
+    public var colors:Array<Color>;
 
     /**
         Get palette information from a PNG file.

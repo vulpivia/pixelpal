@@ -7,15 +7,13 @@ class Color
     /**
         Convert a color from RGB to LAB.
 
-        @param color the RGB color
+        @param r red, from 0-1
+        @param g green, from 0-1
+        @param b blue, from 0-1
         @return the LAB color
     **/
-    public static function rgb2lab(color:Color):Color
+    public static function rgb2lab(r:Float, g:Float, b:Float):Color
     {
-        var r = color.r;
-        var g = color.g;
-        var b = color.b;
-
         r = (r > 0.04045) ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
         g = (g > 0.04045) ? Math.pow((g + 0.055) / 1.055, 2.4) : g / 12.92;
         b = (b > 0.04045) ? Math.pow((b + 0.055) / 1.055, 2.4) : b / 12.92;
@@ -36,5 +34,33 @@ class Color
         this.r = r;
         this.g = g;
         this.b = b;
+    }
+
+    public function convert(palette:Palette):Color
+    {
+        var diff:Float = 1000;
+        var outputColor = new Color(0, 0, 0);
+
+        for (paletteColor in palette.colors)
+        {
+            var colorR = r / 255;
+            var colorG = g / 255;
+            var colorB = b / 255;
+            var paletteR = paletteColor.r / 255;
+            var paletteG = paletteColor.g / 255;
+            var paletteB = paletteColor.b / 255;
+
+            var colorLAB = Color.rgb2lab(colorR, colorG, colorB);
+            var paletteLAB = Color.rgb2lab(paletteR, paletteG, paletteB);
+
+            var currentDiff = Math.sqrt(Math.pow(colorLAB.r - paletteLAB.r, 2) + Math.pow(colorLAB.g - paletteLAB.g, 2) + Math.pow(colorLAB.b - paletteLAB.b, 2));
+            if (currentDiff < diff)
+            {
+                diff = currentDiff;
+                outputColor = paletteColor;
+            }
+        }
+
+        return outputColor;
     }
 }
