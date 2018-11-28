@@ -36,7 +36,7 @@ class Palette
             return null;
         }
 
-        var colors = [];
+        var colors:Array<Color> = [];
 
         for (x in 0...width)
         {
@@ -48,7 +48,7 @@ class Palette
                 var a = data[x * 4 + y * width * 4 + 3];
 
                 var color = new Color(r, g, b);
-                if (colors.indexOf(color) == -1)
+                if (colors.filter(function(c) return c.r == color.r && c.g == color.g && c.b == color.b).length == 0)
                 {
                     colors.push(color);
                 }
