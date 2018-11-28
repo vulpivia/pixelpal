@@ -47,6 +47,11 @@ class Palette
                 var r = data[x * 4 + y * width * 4 + 2];
                 var a = data[x * 4 + y * width * 4 + 3];
 
+                if (a == 0)
+                {
+                    continue;
+                }
+
                 var color = new Color(r, g, b);
                 if (colors.filter(function(c) return c.r == color.r && c.g == color.g && c.b == color.b).length == 0)
                 {
