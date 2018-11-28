@@ -37,7 +37,13 @@ class Image
         empty = false;
     }
 
-    public function validate(palette:Palette)
+    /**
+        Check if the image contains colors outside of a palette.
+
+        @param palette the palette that contains all valid colors
+        @return true if all colors of the image are contained in the palette
+    **/
+    public function validate(palette:Palette):Bool
     {
         for (x in 0...width)
         {

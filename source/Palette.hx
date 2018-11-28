@@ -68,6 +68,12 @@ class Palette
         this.colors = colors;
     }
 
+    /**
+        Check if the palette contains a specific color.
+
+        @param color the color that should be checked
+        @return true if the color is found in the palette
+    **/
     public function contains(color:Color):Bool
     {
         return colors.filter(function(c) return c.r == color.r && c.g == color.g && c.b == color.b).length > 0;
