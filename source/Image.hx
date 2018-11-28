@@ -5,6 +5,9 @@ import sys.io.File;
 
 class Image
 {
+    /**
+        True if the image has been loaded successfully.
+    **/
     public var empty:Bool;
 
     var data:BytesData;
@@ -25,7 +28,7 @@ class Image
 
             handle.close();
         }
-        catch(error:Dynamic)
+        catch (error:Dynamic)
         {
             empty = true;
             return;

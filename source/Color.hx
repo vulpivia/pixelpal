@@ -4,7 +4,13 @@ class Color
     public var g:Float;
     public var b:Float;
 
-    public static function rgb2lab(color:Color)
+    /**
+        Convert a color from RGB to LAB.
+
+        @param color the RGB color
+        @return the LAB color
+    **/
+    public static function rgb2lab(color:Color):Color
     {
         var r = color.r;
         var g = color.g;
