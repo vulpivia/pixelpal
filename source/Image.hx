@@ -36,4 +36,26 @@ class Image
 
         empty = false;
     }
+
+    public function validate(palette:Palette)
+    {
+        for (x in 0...width)
+        {
+            for (y in 0...height)
+            {
+                var b = data[x * 4 + y * width * 4];
+                var g = data[x * 4 + y * width * 4 + 1];
+                var r = data[x * 4 + y * width * 4 + 2];
+                var a = data[x * 4 + y * width * 4 + 3];
+
+                var color = new Color(r, g, b);
+                if (!palette.contains(color))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }

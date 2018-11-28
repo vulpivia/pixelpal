@@ -70,6 +70,11 @@ class PixelPal
         }
 
         var palette = Palette.fromPNG(palette);
+        if (palette == null)
+        {
+            Sys.println("Unable to read palette file '" + palette + "'");
+            return;
+        }
     }
 
     function runValidate(rest:Rest<String>)
@@ -81,6 +86,24 @@ class PixelPal
         }
 
         var palette = Palette.fromPNG(palette);
+        if (palette == null)
+        {
+            Sys.println("Unable to read palette file '" + palette + "'");
+            return;
+        }
+
+        var errorCount = 0;
+
+        for (i in 0...images.length)
+        {
+            if (!images[i].validate(palette))
+            {
+                Sys.println("File '" + rest[i] + "' contains colors outside of the specified palette.");
+                errorCount++;
+            }
+        }
+
+        Sys.println("Validation finished. " + errorCount + " of " + images.length + " files contain colors outside of the specified palette.");
     }
 
     function loadInputFiles(rest:Rest<String>):Array<Image>

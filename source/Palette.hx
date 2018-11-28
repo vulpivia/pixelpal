@@ -62,4 +62,9 @@ class Palette
     {
         this.colors = colors;
     }
+
+    public function contains(color:Color):Bool
+    {
+        return colors.filter(function(c) return c.r == color.r && c.g == color.g && c.b == color.b).length > 0;
+    }
 }
