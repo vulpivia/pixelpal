@@ -15,7 +15,7 @@ Usage:
 Options:
   -h, --help: Help
   -v, --version: Version
-  -p PALETTE, --palette=PALETTE: Name of the palette to use
+  -p PALETTE, --palette=PALETTE: Path of the palette to use
   -o OUTPUT, --output=OUTPUT: Convert to palette and save to output file
 
 Arguments:

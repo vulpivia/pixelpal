@@ -3,7 +3,6 @@ import format.png.Tools;
 import format.png.Writer;
 import haxe.io.Bytes;
 import haxe.io.BytesData;
-import haxe.io.BytesInput;
 import sys.io.File;
 
 class Image

@@ -49,7 +49,7 @@ class PixelPal
         Sys.println("Options:");
         Sys.println("  -h, --help: Help");
         Sys.println("  -v, --version: Version");
-        Sys.println("  -p PALETTE, --palette=PALETTE: Name of the palette to use");
+        Sys.println("  -p PALETTE, --palette=PALETTE: Path of the palette to use");
         Sys.println("  -o OUTPUT, --output=OUTPUT: Convert to palette and save to output file");
         Sys.println("");
         Sys.println("Arguments:");
