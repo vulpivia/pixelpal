@@ -1,16 +1,32 @@
-import sys.io.File;
 import tink.cli.Rest;
 
 @alias(false)
 class PixelPal
 {
+    /**
+        --help flag.
+    **/
     public var help:Bool;
+    /**
+        --version flag.
+    **/
     public var version:Bool;
+    /**
+        --palette flag, should contain a file name.
+    **/
     public var palette:String;
+    /**
+        --output flag, should contain a file name.
+    **/
     public var output:String;
 
     public function new() {}
 
+    /**
+        The entry point. Gets called when the command gets executed.
+
+        @param rest list of input files
+    **/
     @:defaultCommand
     public function run(rest:Rest<String>)
     {

@@ -1,10 +1,12 @@
 import format.png.Reader;
 import format.png.Tools;
-import haxe.io.BytesData;
 import sys.io.File;
 
 class Palette
 {
+    /**
+        List of all colors contained in the palette.
+    **/
     public var colors:Array<Color>;
 
     /**
