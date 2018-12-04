@@ -2,13 +2,13 @@
 
 **PixelPal** is a tool for validating and converting the palette of image files.
 
-## Why?
+## Use Case
 
 When using third party pixel art assets, the palettes of different assets may not match. To unify the look of these assets, you might want to convert their color palettes to match.
 
 ## Usage
 
-```
+```bash
 Usage:
   pixelpal [OPTIONS] [ARGS]
 
