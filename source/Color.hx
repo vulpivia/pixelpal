@@ -1,7 +1,16 @@
 class Color
 {
+    /**
+        Red
+    **/
     public var r:Float;
+    /**
+        Green
+    **/
     public var g:Float;
+    /**
+        Blue
+    **/
     public var b:Float;
 
     /**
@@ -36,6 +45,12 @@ class Color
         this.b = b;
     }
 
+    /**
+        Convert to the nearest color in a palette.
+
+        @param palette the palette
+        @return nearest color
+    **/
     public function convert(palette:Palette):Color
     {
         var diff:Float = 1000;
@@ -53,7 +68,11 @@ class Color
             var colorLAB = Color.rgb2lab(colorR, colorG, colorB);
             var paletteLAB = Color.rgb2lab(paletteR, paletteG, paletteB);
 
-            var currentDiff = Math.sqrt(Math.pow(colorLAB.r - paletteLAB.r, 2) + Math.pow(colorLAB.g - paletteLAB.g, 2) + Math.pow(colorLAB.b - paletteLAB.b, 2));
+            var rDiff = Math.pow(colorLAB.r - paletteLAB.r, 2);
+            var gDiff = Math.pow(colorLAB.g - paletteLAB.g, 2);
+            var bDiff = Math.pow(colorLAB.b - paletteLAB.b, 2);
+
+            var currentDiff = Math.sqrt(rDiff + gDiff + bDiff);
             if (currentDiff < diff)
             {
                 diff = currentDiff;
