@@ -98,7 +98,7 @@ class PixelPal
 
             if (images.length > 1)
             {
-                if (!images[i].save(output + i))
+                if (!images[i].save(addNumber(output, i)))
                 {
                     Sys.println("Unable to write file '" + output + i + "'");
                 }
@@ -113,6 +113,12 @@ class PixelPal
         }
 
         Sys.println("Conversion finished.");
+    }
+
+    function addNumber(s:String, i:Int):String
+    {
+        var dotPos = s.lastIndexOf(".");
+        return s.substring(0, dotPos) + i + s.substring(dotPos, s.length);
     }
 
     function runValidate(rest:Rest<String>)
