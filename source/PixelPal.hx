@@ -115,12 +115,6 @@ class PixelPal
         Sys.println("Conversion finished.");
     }
 
-    function addNumber(s:String, i:Int):String
-    {
-        var dotPos = s.lastIndexOf(".");
-        return s.substring(0, dotPos) + i + s.substring(dotPos, s.length);
-    }
-
     function runValidate(rest:Rest<String>)
     {
         var images = loadInputFiles(rest);
@@ -148,6 +142,12 @@ class PixelPal
         }
 
         Sys.println("Validation finished. " + errorCount + " of " + images.length + " files contain colors outside of the specified palette.");
+    }
+
+    function addNumber(s:String, i:Int):String
+    {
+        var dotPos = s.lastIndexOf(".");
+        return s.substring(0, dotPos) + i + s.substring(dotPos, s.length);
     }
 
     function loadInputFiles(rest:Rest<String>):Array<Image>

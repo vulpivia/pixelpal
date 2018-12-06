@@ -1,19 +1,6 @@
 class Color
 {
     /**
-        Red
-    **/
-    public var r:Float;
-    /**
-        Green
-    **/
-    public var g:Float;
-    /**
-        Blue
-    **/
-    public var b:Float;
-
-    /**
         Convert a color from RGB to LAB.
 
         @param r red, from 0-1
@@ -37,6 +24,19 @@ class Color
 
         return new Color((116 * y) - 16, 500 * (x - y), 200 * (y - z));
     }
+
+    /**
+        Red
+    **/
+    public var r:Float;
+    /**
+        Green
+    **/
+    public var g:Float;
+    /**
+        Blue
+    **/
+    public var b:Float;
 
     public function new(r:Float, g:Float, b:Float)
     {

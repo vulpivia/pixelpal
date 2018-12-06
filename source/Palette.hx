@@ -1,14 +1,10 @@
 import format.png.Reader;
 import format.png.Tools;
+
 import sys.io.File;
 
 class Palette
 {
-    /**
-        List of all colors contained in the palette.
-    **/
-    public var colors:Array<Color>;
-
     /**
         Get palette information from a PNG file.
 
@@ -64,6 +60,11 @@ class Palette
 
         return new Palette(colors);
     }
+    
+    /**
+        List of all colors contained in the palette.
+    **/
+    public var colors:Array<Color>;
 
     public function new(colors:Array<Color>)
     {
