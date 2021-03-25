@@ -1,176 +1,152 @@
 import tink.cli.Rest;
 
 @alias(false)
-class PixelPal
-{
-    /**
-        --help flag.
-    **/
-    public var help:Bool;
-    /**
-        --version flag.
-    **/
-    public var version:Bool;
-    /**
-        --palette flag, should contain a file name.
-    **/
-    public var palette:String;
-    /**
-        --output flag, should contain a file name.
-    **/
-    public var output:String;
+class PixelPal {
+	/**
+		--help flag.
+	**/
+	public var help:Bool = false;
 
-    public function new() {}
+	/**
+		--version flag.
+	**/
+	public var version:Bool = false;
 
-    /**
-        The entry point. Gets called when the command gets executed.
+	/**
+		--palette flag, should contain a file name.
+	**/
+	public var palette:String;
 
-        @param rest list of input files
-    **/
-    @:defaultCommand
-    public function run(rest:Rest<String>)
-    {
-        if (help)
-        {
-            runHelp();
-            return;
-        }
+	/**
+		--output flag, should contain a file name.
+	**/
+	public var output:String = null;
 
-        if (version)
-        {
-            runVersion();
-            return;
-        }
+	public function new() {}
 
-        if (palette == null)
-        {
-            Sys.println("The palette option is required.");
-            return;
-        }
+	/**
+		The entry point. Gets called when the command gets executed.
 
-        if (output != null)
-        {
-            runConvert(rest);
-            return;
-        }
+		@param rest list of input files
+	**/
+	@:defaultCommand
+	public function run(rest:Rest<String>) {
+		if (help) {
+			runHelp();
+			return;
+		}
 
-        runValidate(rest);
-    }
+		if (version) {
+			runVersion();
+			return;
+		}
 
-    function runHelp()
-    {
-        Sys.println("Usage:");
-        Sys.println("  pixelpal [OPTIONS] [ARGS]");
-        Sys.println("");
-        Sys.println("Options:");
-        Sys.println("  -h, --help: Help");
-        Sys.println("  -v, --version: Version");
-        Sys.println("  -p PALETTE, --palette=PALETTE: Path of the palette to use");
-        Sys.println("  -o OUTPUT, --output=OUTPUT: Convert to palette and save to output file");
-        Sys.println("");
-        Sys.println("Arguments:");
-        Sys.println("  INPUT: Input file");
-    }
+		if (output != null) {
+			runConvert(rest);
+			return;
+		}
 
-    function runVersion()
-    {
-        Sys.println("pixelpal 0.1.0");
-    }
+		runValidate(rest);
+	}
 
-    function runConvert(rest:Rest<String>)
-    {
-        var images = loadInputFiles(rest);
-        if (images == null)
-        {
-            return;
-        }
+	function runHelp() {
+		Sys.println("Usage:");
+		Sys.println("  pixelpal [OPTIONS] [ARGS]");
+		Sys.println("");
+		Sys.println("Options:");
+		Sys.println("  -h, --help: Help");
+		Sys.println("  -v, --version: Version");
+		Sys.println("  -p PALETTE, --palette=PALETTE: Path of the palette to use");
+		Sys.println("  -o OUTPUT, --output=OUTPUT: Convert to palette and save to output file");
+		Sys.println("");
+		Sys.println("Arguments:");
+		Sys.println("  INPUT: Input file");
+	}
 
-        var palette = Palette.fromPNG(palette);
-        if (palette == null)
-        {
-            Sys.println("Unable to read palette file '" + palette + "'");
-            return;
-        }
+	function runVersion() {
+		Sys.println("pixelpal 0.1.0");
+	}
 
-        for (i in 0...images.length)
-        {
-            images[i].convert(palette);
+	function runConvert(rest:Rest<String>) {
+		var images = loadInputFiles(rest);
+		if (images == null) {
+			return;
+		}
 
-            if (images.length > 1)
-            {
-                if (!images[i].save(addNumber(output, i)))
-                {
-                    Sys.println("Unable to write file '" + output + i + "'");
-                }
-            }
-            else
-            {
-                if (!images[i].save(output))
-                {
-                    Sys.println("Unable to write file '" + output + "'");
-                }
-            }
-        }
+		var palette = Palette.fromPNG(palette);
+		if (palette == null) {
+			Sys.println("Unable to read palette file '" + palette + "'");
+			return;
+		}
 
-        Sys.println("Conversion finished.");
-    }
+		for (i in 0...images.length) {
+			images[i].convert(palette);
 
-    function runValidate(rest:Rest<String>)
-    {
-        var images = loadInputFiles(rest);
-        if (images == null)
-        {
-            return;
-        }
+			if (images.length > 1) {
+				if (!images[i].save(addNumber(output, i))) {
+					Sys.println("Unable to write file '" + output + i + "'");
+				}
+			} else {
+				if (!images[i].save(output)) {
+					Sys.println("Unable to write file '" + output + "'");
+				}
+			}
+		}
 
-        var palette = Palette.fromPNG(palette);
-        if (palette == null)
-        {
-            Sys.println("Unable to read palette file '" + palette + "'");
-            return;
-        }
+		Sys.println("Conversion finished.");
+	}
 
-        var errorCount = 0;
+	function runValidate(rest:Rest<String>) {
+		var images = loadInputFiles(rest);
+		if (images == null) {
+			return;
+		}
 
-        for (i in 0...images.length)
-        {
-            if (!images[i].validate(palette))
-            {
-                Sys.println("File '" + rest[i] + "' contains colors outside of the specified palette.");
-                errorCount++;
-            }
-        }
+		var palette = Palette.fromPNG(palette);
+		if (palette == null) {
+			Sys.println("Unable to read palette file '" + palette + "'");
+			return;
+		}
 
-        Sys.println("Validation finished. " + errorCount + " of " + images.length + " files contain colors outside of the specified palette.");
-    }
+		var errorCount = 0;
 
-    function addNumber(s:String, i:Int):String
-    {
-        var dotPos = s.lastIndexOf(".");
-        return s.substring(0, dotPos) + i + s.substring(dotPos, s.length);
-    }
+		for (i in 0...images.length) {
+			if (!images[i].validate(palette)) {
+				Sys.println("File '" + rest[i] + "' contains colors outside of the specified palette.");
+				errorCount++;
+			}
+		}
 
-    function loadInputFiles(rest:Rest<String>):Array<Image>
-    {
-        if (rest.length == 0)
-        {
-            Sys.println("No input file specified");
-            Sys.println("Try 'pixelpal --help' for more information.");
-            return null;
-        }
+		Sys.println("Validation finished. "
+			+ errorCount
+			+ " of "
+			+ images.length
+			+ " files contain colors outside of the specified palette.");
+	}
 
-        var images = [];
+	function addNumber(s:String, i:Int):String {
+		var dotPos = s.lastIndexOf(".");
+		return s.substring(0, dotPos) + i + s.substring(dotPos, s.length);
+	}
 
-        for (path in rest)
-        {
-            var image = new Image(path);
-            if (image.empty) {
-                Sys.println("Unable to read file '" + path + "'");
-                return null;
-            }
-            images.push(image);
-        }
+	function loadInputFiles(rest:Rest<String>):Array<Image> {
+		if (rest.length == 0) {
+			Sys.println("No input file specified");
+			Sys.println("Try 'pixelpal --help' for more information.");
+			return null;
+		}
 
-        return images;
-    }
+		var images = [];
+
+		for (path in rest) {
+			var image = new Image(path);
+			if (image.empty) {
+				Sys.println("Unable to read file '" + path + "'");
+				return null;
+			}
+			images.push(image);
+		}
+
+		return images;
+	}
 }
