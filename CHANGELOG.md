@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0 - 2021-04-22
+
 ### Changed
 
 - PixelPal was completely rewritten in Go.
