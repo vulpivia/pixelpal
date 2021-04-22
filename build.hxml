@@ -1,7 +1,0 @@
---class-path source
---library format:3.5.0
---library hxcpp:4.2.1
---library tink_cli:0.5.1
---main Main
---cpp build
---cmd mv build/Main pixelpal

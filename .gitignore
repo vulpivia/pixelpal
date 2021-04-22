@@ -1,6 +1,6 @@
-.DS_Store
-/.vscode
-/build/
-/export/
-/report/
-pixelpal
+/*.gif
+/*.jpg
+/*.png
+/*.webp
+/pixelpal
+/pixelpal.exe

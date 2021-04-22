@@ -2,10 +2,10 @@
 
 ## Unreleased
 
-### Fixed
+### Changed
 
-- Output naming with multiple images
+- PixelPal was completely rewritten in Go.
 
 ## 0.1.0 - 2018-11-28
 
-- Initial release
+- Initial release.
