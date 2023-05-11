@@ -24,6 +24,8 @@ github.com/pegasus-toolset/color v0.1.0 h1:fojrX3pyOtKRr+I05At0aJC7nnfRwLRGO8Q3q
 github.com/pegasus-toolset/color v0.1.0/go.mod h1:VPak4Xyo+q6ebcQ+TSRzkVFVmLn/A9GSmIJj/sn1YS0=
 github.com/pegasus-toolset/color v0.1.1 h1:jy1VemOMrIT5HpW0WYi/zzAStoE/k4q2oVs48FjDAz8=
 github.com/pegasus-toolset/color v0.1.1/go.mod h1:VPak4Xyo+q6ebcQ+TSRzkVFVmLn/A9GSmIJj/sn1YS0=
+github.com/pegasus-toolset/color v0.1.2 h1:z2OqHpMUtoIgGSbOCUfAez09aQhFtZ+TwLHSxhQAoWQ=
+github.com/pegasus-toolset/color v0.1.2/go.mod h1:VPak4Xyo+q6ebcQ+TSRzkVFVmLn/A9GSmIJj/sn1YS0=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=

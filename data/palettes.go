@@ -162,4 +162,62 @@ var Palettes = map[string]color.Palette{
 	"steamlords":  palette.SteamLords,
 
 	"vinik24": palette.Vinik24,
+
+	"aurora": palette.Aurora,
+
+	"blessing": palette.Blessing,
+
+	"blk neo": palette.BLKNEO,
+	"blkneo":  palette.BLKNEO,
+
+	"borkfest": palette.Borkfest,
+
+	"cc-29": palette.CC29,
+	"cc29":  palette.CC29,
+
+	"chocomilk-8": palette.CHOCOMILK8,
+	"chocomilk8":  palette.CHOCOMILK8,
+
+	"dawnbringer 32": palette.DawnBringer32,
+	"dawnbringer32":  palette.DawnBringer32,
+
+	"duel": palette.Duel,
+
+	"famicube": palette.Famicube,
+
+	"lospec500": palette.Lospec500,
+
+	"lux2k": palette.Lux2K,
+
+	"nintendo entertainment system": palette.NintendoEntertainmentSystem,
+	"nintendoentertainmentsystem":   palette.NintendoEntertainmentSystem,
+
+	"nyx8": palette.Nyx8,
+
+	"oil 6": palette.Oil6,
+	"oil6":  palette.Oil6,
+
+	"👌31":  palette.OK31,
+	"ok31": palette.OK31,
+
+	"1bit monitor glow": palette.OnebitMonitorGlow,
+	"1bitmonitorglow":   palette.OnebitMonitorGlow,
+	"onebitmonitorglow": palette.OnebitMonitorGlow,
+
+	"pico-8": palette.PICO8,
+	"pico8":  palette.PICO8,
+
+	"slso8": palette.SLSO8,
+
+	"sweetie 16": palette.Sweetie16,
+	"sweetie16":  palette.Sweetie16,
+
+	"twilight 5": palette.Twilight5,
+	"twilight5":  palette.Twilight5,
+
+	"vine's flexible linear ramps": palette.VinesFlexibleLinearRamps,
+	"vinesflexiblelinearramps":     palette.VinesFlexibleLinearRamps,
+
+	"zughy 32": palette.Zughy32,
+	"zughy32":  palette.Zughy32,
 }
